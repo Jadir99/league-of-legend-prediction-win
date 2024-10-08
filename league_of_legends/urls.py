@@ -3,7 +3,7 @@ from . import views
 
 # url configuration 
 urlpatterns=[
-    # path('hello/',views.hello),
+    path('champs/',views.champs),
     # path('todos/',views.todos)
 ]
 

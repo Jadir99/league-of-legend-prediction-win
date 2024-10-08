@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'winning_prediction.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'jadir',
+        'NAME': 'league',
         'USER': 'root',
         'PASSWORD': '',
         'HOST':'localhost',
