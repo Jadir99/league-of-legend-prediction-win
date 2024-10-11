@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'winning_prediction.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'league',
+        'NAME': 'league_of_legends',
         'USER': 'root',
         'PASSWORD': '',
         'HOST':'localhost',
