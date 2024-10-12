@@ -5,7 +5,7 @@ from .models import Champion, Plateform, Season, Position, Player, Game, Partici
 
 @admin.register(Champion)
 class ChampionAdmin(admin.ModelAdmin):
-    list_display = ['champ_id', 'champ_name']
+    list_display = ['champ_id', 'champ_name','image','winrate']
     search_fields = ['champ_name']
 
 @admin.register(Plateform)

@@ -5492,32 +5492,32 @@ var chartHalfDoughnutInit = function chartHalfDoughnutInit() {
 /* -------------------------------------------------------------------------- */
 
 
-var chartPie = function chartPie() {
-  var pie = document.getElementById('chartjs-pie-chart');
+// var chartPie = function chartPie() {
+//   var pie = document.getElementById('chartjs-pie-chart');
 
-  var getOptions = function getOptions() {
-    return {
-      type: 'pie',
-      data: {
-        datasets: [{
-          data: [5, 3, 2, 1, 1],
-          backgroundColor: [utils.rgbaColor(utils.getColor('facebook'), 0.75), utils.rgbaColor(utils.getColor('youtube'), 0.75), utils.rgbaColor(utils.getColor('twitter'), 0.75), utils.rgbaColor(utils.getColor('linkedin'), 0.75), utils.rgbaColor(utils.getColor('github'), 0.75)],
-          borderWidth: 1,
-          borderColor: utils.getGrays()['100']
-        }],
-        labels: ['Facebook', 'Youtube', 'Twitter', 'Linkedin', 'GitHub']
-      },
-      options: {
-        plugins: {
-          tooltip: chartJsDefaultTooltip()
-        },
-        maintainAspectRatio: false
-      }
-    };
-  };
+//   var getOptions = function getOptions() {
+//     return {
+//       type: 'pie',
+//       data: {
+//         datasets: [{
+//           data: [5, 3, 2, 1, 1],
+//           backgroundColor: [utils.rgbaColor(utils.getColor('facebook'), 0.75), utils.rgbaColor(utils.getColor('youtube'), 0.75), utils.rgbaColor(utils.getColor('twitter'), 0.75), utils.rgbaColor(utils.getColor('linkedin'), 0.75), utils.rgbaColor(utils.getColor('github'), 0.75)],
+//           borderWidth: 1,
+//           borderColor: utils.getGrays()['100']
+//         }],
+//         labels: ['Facebook', 'Youtube', 'Twitter', 'Linkedin', 'GitHub']
+//       },
+//       options: {
+//         plugins: {
+//           tooltip: chartJsDefaultTooltip()
+//         },
+//         maintainAspectRatio: false
+//       }
+//     };
+//   };
 
-  chartJsInit(pie, getOptions);
-};
+//   chartJsInit(pie, getOptions);
+// };
 /* -------------------------------------------------------------------------- */
 
 /*                            Chart Polar                                  */

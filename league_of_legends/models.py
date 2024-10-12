@@ -14,8 +14,8 @@ from django.db import models
 class Champion(models.Model):
     champ_id = models.AutoField(primary_key=True)  # AutoField is usually preferred for primary keys
     champ_name = models.CharField(max_length=50, null=True)
-    image = models.CharField(max_length=50, null=True)
-
+    image = models.CharField(max_length=250, null=True)
+    winrate = models.IntegerField(null=True) 
     class Meta:
         db_table = 'champion'
 
