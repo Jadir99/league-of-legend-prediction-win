@@ -1,0 +1,13 @@
+{
+    "builds": [{
+        "src": "league_of_legends/wsgi.py",
+        "use": "@vercel/python",
+        "config": { "maxLambdaSize": "15mb" }
+    }],
+    "routes": [
+        {
+            "src": "/(.*)",
+            "dest": "league_of_legends/wsgi.py"
+        }
+    ]
+}
