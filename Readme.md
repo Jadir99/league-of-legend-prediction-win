@@ -1,5 +1,5 @@
 # Django School
-# League of Legends Data Visualization Application
+## League of Legends Data Visualization Application
 
 This application visualizes data from League of Legends to provide insights and analysis on player statistics, game performance, and more.
 
@@ -12,19 +12,21 @@ This application visualizes data from League of Legends to provide insights and 
 [![Python Version](https://img.shields.io/badge/python-3.9-brightgreen.svg)](https://python.org)
 [![Django Version](https://img.shields.io/badge/django-5.1.1-brightgreen.svg)](https://djangoproject.com)
 
-This is an example project to illustrate an implementation of multiple user types. In this Django app, teachers can create quizzes and students can sign up and take quizzes related to their interests.
-HOME PAGE:
-![Django School Screenshot](./league_of_legends/static/assets/img/homepage.png)
+This is an example project to illustrate an implementation of multiple user types. In this Django app, teachers can create quizzes, and students can sign up and take quizzes related to their interests.
 
-Dashboard:
-![Django School Screenshot](./league_of_legends/static/assets/img/homepage.png)
-Dashboard 1:
-![Django School Screenshot](./league_of_legends/static/assets/img/dashboard.png)
-champions 2:
-![Django School Screenshot](./league_of_legends/static/assets/img/dashboard2.png)
-champions:
-![Django School Screenshot](./league_of_legends/static/assets/img/champs.png)
+### Screenshots
 
+**Home Page:**
+![Home Page](./league_of_legends/static/assets/img/homepage.png)
+
+**Dashboard:**
+![Dashboard](./league_of_legends/static/assets/img/dashboard.png)
+
+**Dashboard 1:**
+![Dashboard 1](./league_of_legends/static/assets/img/dashboard2.png)
+
+**Champions:**
+![Champions](./league_of_legends/static/assets/img/champs.png)
 
 
 
