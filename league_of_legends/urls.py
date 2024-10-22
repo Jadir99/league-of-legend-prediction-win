@@ -5,6 +5,6 @@ from . import views
 urlpatterns=[
     path('champs/',views.champs),
     path('all/',views.all),
-    # path('todos/',views.todos)
+    path('',views.home)
 ]
 

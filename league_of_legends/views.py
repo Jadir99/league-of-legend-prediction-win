@@ -25,6 +25,8 @@ def champs(request):
     ).order_by('month')  
     # top 5 champions :
     top_5 = champs.order_by('-winrate')[:5]  # Adjust based on your model's attributes
+    bad_5 = champs.order_by('winrate')[:5]
+
     #avg of kills each of towers dragon and champs ...
     # Get the average tower kills from the Game model
     avg_tower_kills = Game.objects.aggregate(avg_tower_kills=Avg('tower_kills'))['avg_tower_kills'] or 0
@@ -40,6 +42,7 @@ def champs(request):
         'games':games,
         'games_by_month':games_by_month,
         'top_5':top_5,
+        'bad_5':bad_5,
         'avg_tower_kills':avg_tower_kills,
         'avg_inhibitor_kills':avg_inhibitor_kills,
         'avg_baron_kills':avg_baron_kills,
@@ -47,9 +50,13 @@ def champs(request):
         })
 
 
+def home(request):
+    return render(request, 'index.html')
+
 def all(request):
     champs=Champion.objects.all()
     for champ in champs:
         # Assuming champ.winrate is a percentage (0-100)
         champ.lossrate = 100 - champ.winrate  # Calculate loss rate
     return render(request,'champs.html',{'champs':champs})
+

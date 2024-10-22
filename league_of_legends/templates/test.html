@@ -55,7 +55,8 @@
     </script>
   </head>
 
-  <body>
+  <body class="mt-4">
+    
     <!-- ===============================================-->
     <!--    Main Content-->
     <!-- ===============================================-->
@@ -115,7 +116,7 @@
               <div class="row">
                 <div class="col-lg-8">
                   <h3>Dashboard of league of legends</h3>
-                  <p class="mb-0">This page contain all of chamions</p>
+                  <p class="mb-0">This page contain the visualisation about the game </p>
                 </div>
               </div>
             </div>
@@ -127,22 +128,18 @@
                 <div class="col-xxl-3 col-md-6 px-3 text-center border-end-md border-bottom border-bottom-xxl-0 pb-3 p-xxl-0 ps-md-0">
                   <div class="icon-circle icon-circle-primary"><img class="rounded-circle w-100" src="https://static.wikia.nocookie.net/leagueoflegends/images/a/a9/Summoners_Rift_Nexus_Obelisk.png" alt=""></div>
                   <h4 class="mb-1 font-sans-serif"><span class="text-700 mx-2" data-countup='{"endValue":"4968"}'>{{avg_tower_kills}}</span><span class="fw-normal text-600">average of tower destruction</span></h4>
-                  <p class="fs--1 fw-semi-bold mb-0">4203 <span class="text-600 fw-normal">last month</span></p>
                 </div>
                 <div class="col-xxl-3 col-md-6 px-3 text-center border-end-md border-bottom border-bottom-xxl-0 pb-3 p-xxl-0 ps-md-0">
                   <div class="icon-circle icon-circle-primary"><img class="rounded-circle w-100" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfSP9aUzaE28jRWvqQB4F6LicekapGBDbauQ&s" alt=""></div>
                   <h4 class="mb-1 font-sans-serif"><span class="text-700 mx-2" data-countup='{"endValue":"4968"}'>{{avg_inhibitor_kills}}</span><span class="fw-normal text-600">average of inhibitor destruction</span></h4>
-                  <p class="fs--1 fw-semi-bold mb-0">4203 <span class="text-600 fw-normal">last month</span></p>
                 </div>
-                <div class="col-xxl-3 col-md-6 px-3 text-center border-end-md border-bottom border-bottom-xxl-0 pb-3 p-xxl-0 ps-md-0">
+                <div class="col-xxl-3 col-md-6 px-3 text-center border-end-md border-bottom border-bottom-xxl-0 pb-3 p-xxl-0 ps-md-0 m-b-4">
                   <div class="icon-circle icon-circle-primary"><img class="rounded-circle w-100" src="https://static.wikia.nocookie.net/leagueoflegends/images/4/43/Territorial_Baron_Nashor_Render.png/revision/latest?cb=20231122093255" alt=""></div>
                   <h4 class="mb-1 font-sans-serif"><span class="text-700 mx-2" data-countup='{"endValue":"4968"}'>{{avg_baron_kills}}%</span><span class="fw-normal text-600">average of Baron kills</span></h4>
-                  <p class="fs--1 fw-semi-bold mb-0">4203 <span class="text-600 fw-normal">last month</span></p>
                 </div>
                 <div class="col-xxl-3 col-md-6 px-3 text-center border-end-md border-bottom border-bottom-xxl-0 pb-3 p-xxl-0 ps-md-0">
                   <div class="icon-circle icon-circle-primary"><img class="rounded-circle w-100" src="https://static1.millenium.org/article_old/images/contenu/actus/LOL/Saison_6/Rework_des_mages/pyrodragon.png" alt=""></div>
                   <h4 class="mb-1 font-sans-serif"><span class="text-700 mx-2" data-countup='{"endValue":"4968"}'>{{avg_dragon_kills}} </span><span class="fw-normal text-600">average of dragon kills</span></h4>
-                  <p class="fs--1 fw-semi-bold mb-0">4203 <span class="text-600 fw-normal">last month</span></p>
                 </div>
                 
               </div>
@@ -278,7 +275,7 @@
 &lt;/div&gt;</code></pre>
                 </div>
               </div>
-              <a href="/league_of_legends/all">view all </a>
+              <a href="/all">view all </a>
             </div>
             
           </div>
@@ -372,56 +369,75 @@
                   <div class="tab-content">
                     <div class="tab-pane preview-tab-pane active" role="tabpanel" aria-labelledby="tab-dom-0b8a4b6d-d049-420c-9bab-7195d2a70ef5" id="dom-0b8a4b6d-d049-420c-9bab-7195d2a70ef5">
                       <!-- Find the JS file for the following chart at: src/js/charts/chartjs/chart-line.js-->
-                      
                       <script>
                         var chartLine = function chartLine() {
                           var line = document.getElementById('chartjs-line-chart');
-                      
+                          
+                          // Define chart options and configuration
                           var getOptions = function getOptions() {
                             return {
-                              type: 'bar',
+                              type: 'line',  // Keep it a line chart for "total games by month"
                               data: {
-                                labels: ['samir', 'February', 'March', 'April', 'May', 'June', 'July'],
+                                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],  // X-axis labels (months)
                                 datasets: [{
-                                  type: 'line',
-                                  label: 'total games by month',
-                                  borderColor: utils.getColor('primary'),
+                                  label: 'Total Games by Month',
+                                  borderColor: utils.getColor('primary'),  // Set primary color for the line
                                   borderWidth: 2,
-                                  fill: false,
+                                  backgroundColor: utils.rgbaColor(utils.getColor('primary'), 0.1),  // Slight fill below the line
+                                  fill: true,  // Line chart with light fill under the curve
                                   data: [
-                                    
                                     {% for game in games_by_month %}
-                                    {{ game.total_games }}{% if not forloop.last %}, {% endif %}
+                                      {{ game.total_games }}{% if not forloop.last %}, {% endif %}
                                     {% endfor %}
                                   ],
-                                  tension: 0.3
+                                  tension: 0.4,  // Smoothness of the line curve
+                                  pointBackgroundColor: utils.getColor('primary'),  // Color of data points
+                                  pointRadius: 5,  // Size of the points
+                                  pointHoverRadius: 7,  // Size of the points on hover
                                 }]
                               },
                               options: {
+                                responsive: true,
+                                maintainAspectRatio: false,  // Allow chart to be flexible in width and height
                                 plugins: {
-                                  tooltip: chartJsDefaultTooltip()
+                                  tooltip: chartJsDefaultTooltip(),  // Default tooltip behavior
+                                  legend: {
+                                    display: true,  // Show the legend
+                                    labels: {
+                                      color: utils.getGrays()['700'],  // Color of legend text
+                                    }
+                                  }
                                 },
                                 scales: {
                                   x: {
                                     grid: {
-                                      color: utils.rgbaColor(utils.getGrays().black, 0.1)
+                                      color: utils.rgbaColor(utils.getGrays()['300'], 0.2),  // Light grid lines on the x-axis
+                                    },
+                                    ticks: {
+                                      color: utils.getGrays()['700']  // Color of x-axis labels
                                     }
                                   },
                                   y: {
                                     grid: {
-                                      color: utils.rgbaColor(utils.getGrays().black, 0.1)
-                                    }
+                                      color: utils.rgbaColor(utils.getGrays()['300'], 0.2),  // Light grid lines on the y-axis
+                                    },
+                                    ticks: {
+                                      color: utils.getGrays()['700']  // Color of y-axis labels
+                                    },
+                                    beginAtZero: true  // Start y-axis at 0
                                   }
                                 }
                               }
                             };
                           };
                       
+                          // Initialize chart with options
                           chartJsInit(line, getOptions);
                         };
                       </script>
                       
-                      <canvas class="max-w-100" id="chartjs-line-chart" width="1618" height="1000"></canvas>
+                      
+                      <canvas class="max-w-100" id="chartjs-line-chart" width="1618" height="310"></canvas>
                     </div>
                     <div class="tab-pane code-tab-pane" role="tabpanel" aria-labelledby="tab-dom-557a3f1e-b288-48fe-a18c-1631ea60b01d" id="dom-557a3f1e-b288-48fe-a18c-1631ea60b01d"><pre class="scrollbar rounded-1" style="max-height:420px"><code class="language-html">
 &lt;!-- Find the JS file for the following chart at: src/js/charts/chartjs/chart-line.js--&gt;
@@ -440,16 +456,56 @@
                 <div class="card-header">
                   <div class="row flex-between-end">
                     <div class="col-auto align-self-center">
-                      <h5 class="mb-0" data-anchor="data-anchor">Doughnut Chart</h5>
-                    </div>
-                    <div class="col-auto ms-auto">
-                      <div class="nav nav-pills nav-pills-falcon flex-grow-1" role="tablist"><button class="btn btn-sm active" data-bs-toggle="pill" data-bs-target="#dom-bc6ed8ff-d92c-411b-a20a-21eef98f8116" type="button" role="tab" aria-controls="dom-bc6ed8ff-d92c-411b-a20a-21eef98f8116" aria-selected="true" id="tab-dom-bc6ed8ff-d92c-411b-a20a-21eef98f8116">Preview</button><button class="btn btn-sm" data-bs-toggle="pill" data-bs-target="#dom-05c8fdd4-74a2-4e44-9782-93e7ceff2f3a" type="button" role="tab" aria-controls="dom-05c8fdd4-74a2-4e44-9782-93e7ceff2f3a" aria-selected="false" id="tab-dom-05c8fdd4-74a2-4e44-9782-93e7ceff2f3a">Code</button></div>
+                      <h5 class="mb-0" data-anchor="data-anchor">top bad 5 champions</h5>
                     </div>
                   </div>
                 </div>
                 <div class="card-body bg-light">
                   <div class="tab-content">
                     <div class="tab-pane preview-tab-pane active" role="tabpanel" aria-labelledby="tab-dom-bc6ed8ff-d92c-411b-a20a-21eef98f8116" id="dom-bc6ed8ff-d92c-411b-a20a-21eef98f8116">
+                        <script>
+                          var chartDoughnut = function chartDoughnut() {
+                            var doughnut = document.getElementById('chartjs-doughnut-chart');
+
+                            var getOptions = function getOptions() {
+                              return {
+                                type: 'doughnut',
+                                data: {
+                                  datasets: [{
+                                    data: [
+                                        {% for champ in bad_5 %}
+                                          "{{ champ.winrate }}"{% if not forloop.last %}, {% endif %}
+                                        {% endfor %}],
+                                    backgroundColor: [utils.rgbaColor(utils.getColor('facebook'), 0.2), utils.rgbaColor(utils.getColor('youtube'), 0.2), utils.rgbaColor(utils.getColor('twitter'), 0.2), utils.rgbaColor(utils.getColor('linkedin'), 0.2), utils.rgbaColor(utils.getColor('github'), 0.2)],
+                                    borderWidth: 1,
+                                    borderColor: [utils.getColor('facebook'), utils.getColor('youtube'), utils.getColor('twitter'), utils.getColor('linkedin'), utils.getColor('github')]
+                                  }],
+                                  labels: [ 
+                                      {% for champ in bad_5 %}
+                                        "{{ champ.champ_name }}"{% if not forloop.last %}, {% endif %}
+                                      {% endfor %}]
+                                },
+                                options: {
+                                  plugins: {
+                                    tooltip: chartJsDefaultTooltip()
+                                  },
+                                  maintainAspectRatio: false
+                                }
+                              };
+                            };
+
+                            chartJsInit(doughnut, getOptions);
+                          };
+                          var docReady = function docReady(fn) {
+                            // see if DOM is already available
+                            if (document.readyState === 'loading') {
+                              document.addEventListener('DOMContentLoaded', fn);
+                            } else {
+                              setTimeout(fn, 1);
+                            }
+                          };
+                          docReady(chartDoughnut);
+                        </script>
                       <!-- Find the JS file for the following chart at: src/js/charts/chartjs/chart-doughnut.js-->
                       <!-- If you are not using gulp based workflow, you can find the transpiled code at: public/assets/js/theme.js--><canvas class="max-w-100" id="chartjs-doughnut-chart" width="350"></canvas>
                     </div>
@@ -469,9 +525,6 @@
                     <div class="col-auto align-self-center">
                       <h5 class="mb-0" data-anchor="data-anchor">top 5 champions </h5>
                     </div>
-                    <div class="col-auto ms-auto">
-                      <div class="nav nav-pills nav-pills-falcon flex-grow-1" role="tablist"><button class="btn btn-sm active" data-bs-toggle="pill" data-bs-target="#dom-190dd253-0ef8-4ccc-8d57-229751eb9f42" type="button" role="tab" aria-controls="dom-190dd253-0ef8-4ccc-8d57-229751eb9f42" aria-selected="true" id="tab-dom-190dd253-0ef8-4ccc-8d57-229751eb9f42">Preview</button><button class="btn btn-sm" data-bs-toggle="pill" data-bs-target="#dom-9b0f4de1-1bc5-4163-abcb-61f81d0239a6" type="button" role="tab" aria-controls="dom-9b0f4de1-1bc5-4163-abcb-61f81d0239a6" aria-selected="false" id="tab-dom-9b0f4de1-1bc5-4163-abcb-61f81d0239a6">Code</button></div>
-                    </div>
                   </div>
                 </div>
                 <div class="card-body bg-light">
@@ -481,38 +534,38 @@
                       <!-- If you are not using gulp based workflow, you can find the transpiled code at: public/assets/js/theme.js-->
                        <script>
                         
-var chartPie = function chartPie() {
-  var pie = document.getElementById('chartjs-pie-chart');
+                          var chartPie = function chartPie() {
+                            var pie = document.getElementById('chartjs-pie-chart');
 
-  var getOptions = function getOptions() {
-    return {
-      type: 'pie',
-      data: {
-        datasets: [{
-          data: [
-              {% for champ in top_5 %}
-                "{{ champ.winrate }}"{% if not forloop.last %}, {% endif %}
-              {% endfor %}],
-          backgroundColor: [utils.rgbaColor(utils.getColor('facebook'), 0.75), utils.rgbaColor(utils.getColor('youtube'), 0.75), utils.rgbaColor(utils.getColor('twitter'), 0.75), utils.rgbaColor(utils.getColor('linkedin'), 0.75), utils.rgbaColor(utils.getColor('github'), 0.75)],
-          borderWidth: 1,
-          borderColor: utils.getGrays()['100']
-        }],
-        labels: [ 
-                                  {% for champ in top_5 %}
-                                    "{{ champ.champ_name }}"{% if not forloop.last %}, {% endif %}
-                                  {% endfor %}]
-      },
-      options: {
-        plugins: {
-          tooltip: chartJsDefaultTooltip()
-        },
-        maintainAspectRatio: false
-      }
-    };
-  };
+                            var getOptions = function getOptions() {
+                              return {
+                                type: 'pie',
+                                data: {
+                                  datasets: [{
+                                    data: [
+                                        {% for champ in top_5 %}
+                                          "{{ champ.winrate }}"{% if not forloop.last %}, {% endif %}
+                                        {% endfor %}],
+                                    backgroundColor: [utils.rgbaColor(utils.getColor('facebook'), 0.75), utils.rgbaColor(utils.getColor('youtube'), 0.75), utils.rgbaColor(utils.getColor('twitter'), 0.75), utils.rgbaColor(utils.getColor('linkedin'), 0.75), utils.rgbaColor(utils.getColor('github'), 0.75)],
+                                    borderWidth: 1,
+                                    borderColor: utils.getGrays()['100']
+                                  }],
+                                  labels: [ 
+                                                            {% for champ in top_5 %}
+                                                              "{{ champ.champ_name }}"{% if not forloop.last %}, {% endif %}
+                                                            {% endfor %}]
+                                },
+                                options: {
+                                  plugins: {
+                                    tooltip: chartJsDefaultTooltip()
+                                  },
+                                  maintainAspectRatio: false
+                                }
+                              };
+                            };
 
-  chartJsInit(pie, getOptions);
-};
+                            chartJsInit(pie, getOptions);
+                          };
                        </script>
                        <canvas class="max-w-100" id="chartjs-pie-chart" width="350"></canvas>
                     </div>
@@ -528,13 +581,13 @@ var chartPie = function chartPie() {
           </div>
           
           
+          
           <footer class="footer">
             <div class="row g-0 justify-content-between fs--1 mt-4 mb-3">
               <div class="col-12 col-sm-auto text-center">
-                <p class="mb-0 text-600">Thank you for creating with Falcon <span class="d-none d-sm-inline-block">| </span><br class="d-sm-none" /> 2023 &copy; <a href="https://themewagon.com/">Themewagon</a></p>
+                <p class="mb-0 text-600">JADIR Mohammed<span class="d-none d-sm-inline-block">| </span><br class="d-sm-none" /> 2024 &copy; <a href="https://themewagon.com/"></a></p>
               </div>
               <div class="col-12 col-sm-auto text-center">
-                <p class="mb-0 text-600">v3.16.0</p>
               </div>
             </div>
           </footer>
@@ -641,7 +694,7 @@ var chartPie = function chartPie() {
 <script src="{% static 'assets/js/theme.js' %}"></script>
 <script src="{% static 'vendors/chart/chart.min.js' %}"></script>
 <script src="{% static 'assets/js/config.js' %}"></script>
-<script src="{% static 'vendors/simplebar/simplebar.min.js' %}"></script>
+<!-- <script src="{% static 'vendors/simplebar/simplebar.min.js' %}"></script> -->
   </body>
 <!-- Mirrored from prium.github.io/falcon/v3.16.0/modules/charts/chartjs.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 22 Apr 2023 03:57:59 GMT -->
 </html>
