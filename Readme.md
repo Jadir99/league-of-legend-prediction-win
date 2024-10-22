@@ -1,3 +1,4 @@
+# Django School
 # League of Legends Data Visualization Application
 
 This application visualizes data from League of Legends to provide insights and analysis on player statistics, game performance, and more.
@@ -8,27 +9,51 @@ This application visualizes data from League of Legends to provide insights and 
 - Visualization of match history and performance metrics.
 - Custom filters to analyze specific data points.
 
-## Screenshots
+[![Python Version](https://img.shields.io/badge/python-3.9-brightgreen.svg)](https://python.org)
+[![Django Version](https://img.shields.io/badge/django-5.1.1-brightgreen.svg)](https://djangoproject.com)
 
-Here are some screenshots of the application:
+This is an example project to illustrate an implementation of multiple user types. In this Django app, teachers can create quizzes and students can sign up and take quizzes related to their interests.
+HOME PAGE:
+![Django School Screenshot](./league_of_legends/static/assets/img/homepage.png)
 
-### Dashboard
+Dashboard:
+![Django School Screenshot](./league_of_legends/static/assets/img/homepage.png)
+Dashboard 1:
+![Django School Screenshot](./league_of_legends/static/assets/img/dashboard.png)
+champions 2:
+![Django School Screenshot](./league_of_legends/static/assets/img/dashboard2.png)
+champions:
+![Django School Screenshot](./league_of_legends/static/assets/img/champs.png)
 
-![Dashboard](link-to-dashboard-image)
 
-### Player Statistics
 
-![Player Statistics](link-to-player-statistics-image)
 
-### Match History
+## Running the Project Locally
 
-![Match History](link-to-match-history-image)
+First, clone the repository to your local machine:
 
-## Installation
+```bash
+git clone https://github.com/Jadir99/league-of-legend-prediction-win.git
+```
 
-To set up this application on your local machine, follow these steps:
+Install the requirements:
 
-1. **Clone the repository:**
+```bash
+pip install -r requirements.txt
+```
 
-   ```bash
-   git clone https://github.com/yourusername/your-repo-name.git
+Create the database:
+
+```bash
+python manage.py migrate
+```
+
+Finally, run the development server:
+
+```bash
+python manage.py runserver
+```
+
+The project will be available at **127.0.0.1:8000**.
+
+
